@@ -1,0 +1,24 @@
+@port=3000
+@token={{$dotenv REST_CLIENT_USER_AUTH_TOKEN}}
+
+### get root
+GET http://localhost:{{port}}/
+
+### get profile 
+GET http://localhost:{{port}}/auth/profile
+Authorization: Bearer {{token}}
+X-Correlation-Id: {{$guid}}
+
+### get all tasks 
+GET http://localhost:{{port}}/tasks
+Authorization: Bearer {{token}}
+X-Correlation-Id: edad1c9d-da99-40b4-ab94-2f056664d6c3
+
+### create task 
+POST http://localhost:{{port}}/tasks
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "task name {{$timestamp}}"
+}
